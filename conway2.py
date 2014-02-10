@@ -61,11 +61,13 @@ class board:
         determines a cell's new state based on adjacent_living cells.\
         """
         adjacent_living = self._check_adjacent(cell)
-        
+
         if adjacent_living < 2 or adjacent_living > 3: 
             return False
-        else: 
+        elif cell.is_alive or adjacent_living == 3:
             return True
+        else:
+            return False
 
 
 class Cell:
@@ -100,5 +102,5 @@ def tick(tick_board):
     
 x = board(10)
 x.seed([0,1])
-x.seed([1,1])
-x.seed([1,2])
+x.seed([3,1])
+x.seed([2,2])
