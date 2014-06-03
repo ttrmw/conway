@@ -43,7 +43,7 @@ class Board:
         """
         
         ret = 0
-        #board instance needs to be referenced here for things to be done.
+        
         ret += self.cells[wrap(cell.x + 1)][wrap(cell.y)].is_alive
         ret += self.cells[wrap(cell.x - 1)][wrap(cell.y)].is_alive
         ret += self.cells[wrap(cell.x + 1)][wrap(cell.y + 1)].is_alive
@@ -52,7 +52,7 @@ class Board:
         ret += self.cells[wrap(cell.x - 1)][wrap(cell.y - 1)].is_alive
         ret += self.cells[wrap(cell.x)][wrap(cell.y + 1)].is_alive
         ret += self.cells[wrap(cell.x)][wrap(cell.y - 1)].is_alive
-        #idx % len(board.cells(coord))
+        
         return ret
 
     def alive_next(self, cell): 
@@ -94,7 +94,7 @@ def tick(tick_board):
                 new_board.cells[cell.x][cell.y].is_alive = tick_board.alive_next(cell)
                 i += new_board.cells[cell.x][cell.y].is_alive
 
-    #check & iterate state of all cells on board.
+    
     print "old board:"
     print tick_board.state() 
     print "new board:"
