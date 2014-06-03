@@ -1,4 +1,4 @@
-class board:
+class Board:
     """\
     class to represent a Conway's Game of Life board\
     """ 
@@ -15,7 +15,6 @@ class board:
     def seed(self, coords):
         self.cells[coords[1]][coords[0]].is_alive = True 
 
- 
     def state(self):
         """\
         check the state of the current_board\
@@ -69,6 +68,7 @@ class board:
         else:
             return False
 
+        return True
 
 class Cell:
     """\
@@ -87,20 +87,38 @@ def tick(tick_board):
     """\
     iterate board by one generation\
     """
-    new_board = board(tick_board.size)
+    i = 0
+    new_board = Board(tick_board.size)
     for col in tick_board.cells:
         for cell in col: 
                 new_board.cells[cell.x][cell.y].is_alive = tick_board.alive_next(cell)
-                    
+                i += new_board.cells[cell.x][cell.y].is_alive
+
     #check & iterate state of all cells on board.
     print "old board:"
     print tick_board.state() 
     print "new board:"
     print new_board.state()
+    print i
     return new_board  
 
     
-x = board(10)
-x.seed([0,1])
-x.seed([3,1])
-x.seed([2,2])
+x = Board(10)
+x.seed([0, 1])
+x.seed([3, 1])
+x.seed([2, 2])
+
+x.seed([1, 1])
+x.seed([3, 2])
+x.seed([2, 1])
+x.seed([4, 1])
+x.seed([0, 0])
+x.seed([2, 1])
+
+x.seed([4, 0])
+x.seed([4, 2])
+x.seed([4, 3])
+x.seed([4, 1])
+x.seed([0, 4])
+x.seed([2, 4])
+
